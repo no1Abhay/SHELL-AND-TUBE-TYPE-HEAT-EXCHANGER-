@@ -49,7 +49,7 @@ results = {}
 
 # === TAB 1: Natural Frequency ===
 with tabs[0]:
-    st.header("🌀 Natural Frequency")
+    st.header("Natural Frequency")
     I = (np.pi / 64) * (D**4 - (D - 2*t)**4)
     m = rho_material * (np.pi * (D**2 - (D - 2*t)**2)) / 4
     f_n = (1 / (2 * np.pi)) * np.sqrt(E * I / (m * L**2))
@@ -58,14 +58,14 @@ with tabs[0]:
 
 # === TAB 2: Reynolds Number ===
 with tabs[1]:
-    st.header("🌊 Reynolds Number")
+    st.header(" Reynolds Number")
     Re = (fluid_velocity * D * fluid_density) / fluid_viscosity
     results["Reynolds Number"] = f"{Re:.2f}"
     st.success(f"Reynolds Number: {Re:.2f}")
 
 # === TAB 3: Vortex Shedding ===
 with tabs[2]:
-    st.header("🌪️ Vortex Shedding")
+    st.header(" Vortex Shedding")
     St = 0.2
     shedding_freq = (St * fluid_velocity) / D
     results["Vortex Shedding Frequency"] = f"{shedding_freq:.2f} Hz"
@@ -73,7 +73,7 @@ with tabs[2]:
 
 # === TAB 4: Turbulent Buffeting ===
 with tabs[3]:
-    st.header("💨 Turbulent Buffeting")
+    st.header("Turbulent Buffeting")
     turbulence_intensity = 0.1
     buffeting_effect = fluid_velocity * D * turbulence_intensity
     results["Turbulent Buffeting Effect"] = f"{buffeting_effect:.2f} N"
@@ -81,7 +81,7 @@ with tabs[3]:
 
 # === TAB 5: Acoustic Resonance ===
 with tabs[4]:
-    st.header("🎶 Acoustic Resonance in Shell and Tube Heat Exchanger")
+    st.header("Acoustic Resonance in Shell and Tube Heat Exchanger")
 
     st.subheader("1. Fluid Properties")
     gamma = st.number_input("Heat Capacity Ratio (γ)", value=1.4, min_value=1.0)
@@ -103,8 +103,8 @@ with tabs[4]:
     f_axial = speed_of_sound / (2 * length_shell)
     f_angular = (speed_of_sound * K) / (2 * np.pi * tube_pitch)
 
-    st.write(f"📏 **Axial Resonance Frequency:** {f_axial:.2f} Hz")
-    st.write(f"🌀 **Angular Resonance Frequency:** {f_angular:.2f} Hz")
+    st.write(f" **Axial Resonance Frequency:** {f_axial:.2f} Hz")
+    st.write(f" **Angular Resonance Frequency:** {f_angular:.2f} Hz")
 
     st.caption("Note: Axial resonance is based on shell length. Angular resonance depends on pitch type and layout.")
     results["Axial Resonance"] = f"{f_axial:.2f} Hz"
@@ -112,7 +112,7 @@ with tabs[4]:
 
 # === TAB 6: Fluid Elastic Instability ===
 with tabs[5]:
-    st.header("🌉 Fluid Elastic Instability")
+    st.header(" Fluid Elastic Instability")
     instability_factor = fluid_velocity * D
     results["Fluid Elastic Instability Factor"] = f"{instability_factor:.2f}"
     st.success(f"Fluid Elastic Instability Factor: {instability_factor:.2f}")
