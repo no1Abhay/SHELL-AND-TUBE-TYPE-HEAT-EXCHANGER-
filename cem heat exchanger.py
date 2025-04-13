@@ -49,7 +49,7 @@ results = {}
 
 # === TAB 1: Natural Frequency ===
 with tabs[0]:
-    st.header("Natural Frequency")
+    st.header(" Natural Frequency")
     I = (np.pi / 64) * (D**4 - (D - 2*t)**4)
     m = rho_material * (np.pi * (D**2 - (D - 2*t)**2)) / 4
     f_n = (1 / (2 * np.pi)) * np.sqrt(E * I / (m * L**2))
@@ -65,7 +65,7 @@ with tabs[1]:
 
 # === TAB 3: Vortex Shedding ===
 with tabs[2]:
-    st.header(" Vortex Shedding")
+    st.header("Vortex Shedding")
     St = 0.2
     shedding_freq = (St * fluid_velocity) / D
     results["Vortex Shedding Frequency"] = f"{shedding_freq:.2f} Hz"
@@ -81,7 +81,7 @@ with tabs[3]:
 
 # === TAB 5: Acoustic Resonance ===
 with tabs[4]:
-    st.header("Acoustic Resonance in Shell and Tube Heat Exchanger")
+    st.header(" Acoustic Resonance in Shell and Tube Heat Exchanger")
 
     st.subheader("1. Fluid Properties")
     gamma = st.number_input("Heat Capacity Ratio (γ)", value=1.4, min_value=1.0)
@@ -104,7 +104,7 @@ with tabs[4]:
     f_angular = (speed_of_sound * K) / (2 * np.pi * tube_pitch)
 
     st.write(f" **Axial Resonance Frequency:** {f_axial:.2f} Hz")
-    st.write(f" **Angular Resonance Frequency:** {f_angular:.2f} Hz")
+    st.write(f"**Angular Resonance Frequency:** {f_angular:.2f} Hz")
 
     st.caption("Note: Axial resonance is based on shell length. Angular resonance depends on pitch type and layout.")
     results["Axial Resonance"] = f"{f_axial:.2f} Hz"
@@ -166,7 +166,7 @@ with tabs[6]:
 
     from io import BytesIO
     buf = BytesIO()
-    fig.savefig(buf, format="png")
+    fig.savefig(buf, format="PDF")
     st.download_button("📥 Download Graph as PNG", buf.getvalue(), file_name="vibration_response.png", mime="image/png")
 
     if max_disp > collision_threshold:
@@ -177,4 +177,4 @@ with tabs[7]:
     st.header("📄 Download Final Report")
     result_text = "\n".join([f"{k}: {v}" for k, v in results.items()])
     st.text_area("🔎 Full Summary", result_text, height=300)
-    st.download_button("📥 Download Results as TXT", result_text, file_name="final_results.txt", mime="text/plain")
+    st.download_button("📥 Download Results as PDF", result_text, file_name="final_results.txt", mime="text/plain")
